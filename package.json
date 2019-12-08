@@ -2,11 +2,11 @@
   "name": "bundler-tests",
   "version": "0.1.0",
   "description": "",
-  "main": "index.js",
   "scripts": {
-    "dev": "ts-node -T fuse",
-    "build": "ts-node -T fuse dist",
-    "verify": "ts-node -T fuse verify",
+    "dev": "parcel --port 3000 src/index.html",
+    "prebuild": "rm -rf public",
+    "build": "parcel build ./src/index.html",
+    "postbuild": "mv dist public",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "",
@@ -22,11 +22,7 @@
   "devDependencies": {
     "@types/react": "^16.9.15",
     "@types/react-dom": "^16.9.4",
-    "fuse-box": "^4.0.0-next.156",
-    "node-sass": "^4.13.0",
-    "ts-node": "^8.5.4",
-    "tslib": "^1.10.0",
-    "typescript": "^3.7.3",
-    "uglify-js": "^3.7.1"
+    "parcel": "^2.0.0-alpha.3.2",
+    "sass": "^1.23.7"
   }
 }
