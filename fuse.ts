@@ -21,12 +21,11 @@ task('default', async ctx => {
   await fuse.runDev()
 })
 
-task('preview', async ctx => {
+task('verify', async ctx => {
   ctx.runServer = true
   const fuse = ctx.getConfig()
   await fuse.runProd({ 
     uglify: true,
-    treeshake: true, 
   })
 })
 task('dist', async ctx => {

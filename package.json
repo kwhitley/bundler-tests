@@ -4,16 +4,20 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "ts-node -T fuse",
-    "dist": "ts-node -T fuse dist",
-    "preview": "ts-node -T fuse preview",
+    "dev": "ts-node -T fuse",
+    "build": "ts-node -T fuse dist",
+    "verify": "ts-node -T fuse verify",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "preact": "^10.0.5",
+    "preact-compat": "^3.19.0",
     "react": "^16.12.0",
-    "react-dom": "^16.12.0"
+    "react-dom": "^16.12.0",
+    "react-router-dom": "^5.1.2",
+    "styled-components": "^4.4.1"
   },
   "devDependencies": {
     "@types/react": "^16.9.15",
