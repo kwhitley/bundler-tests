@@ -6,6 +6,7 @@ class Context {
     fusebox({
       target: 'browser',
       entry: 'src/index.tsx',
+      output: 'public/$name.js',
       webIndex: {
         template: 'src/index.html'
       },
