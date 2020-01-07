@@ -1,20 +1,14 @@
 import { fusebox, sparky } from 'fuse-box'
-import { pluginTypeChecker } from 'fuse-box-typechecker'
 
 class Context {
   runServer
-
   getConfig = () =>
     fusebox({
       target: 'browser',
       entry: 'src/index.tsx',
-      output: 'public/$name',
-      plugins:[ pluginTypeChecker({
-        tsConfig: './src/tsconfig', // optional, uses default if missing
-        name: 'Superman', // optional, uses "no-name" if missing
-      })],
+      output: 'dist/$name',
       webIndex: {
-        template: 'src/index.html',
+        template: 'src/index.html'
       },
       dependencies: {
         include: ['tslib'],
@@ -23,7 +17,7 @@ class Context {
         httpServer: { port: 3000 },
         hmrServer: { port: 3001 },
       } : false,
-      cache : true,
+      cache : false,
     })
 }
 const { task } = sparky<Context>(Context)
@@ -39,7 +33,7 @@ task('verify', async ctx => {
   const fuse = ctx.getConfig()
   await fuse.runProd({ 
     uglify: true,
-    manifest: true,
+    // manifest: true,
   })
 })
 task('dist', async ctx => {
@@ -47,6 +41,6 @@ task('dist', async ctx => {
   const fuse = ctx.getConfig()
   await fuse.runProd({ 
     uglify: true,
-    manifest: true,
+    // manifest: true,
   })
 })

@@ -4,9 +4,10 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "dev": "ts-node -T fuse",
-    "build": "ts-node -T fuse dist",
-    "verify": "ts-node -T fuse verify",
+    "clean": "rm -rf dist",
+    "dev": "yarn clean && ts-node -T fuse",
+    "build": "yarn clean && ts-node -T fuse dist",
+    "verify": "yarn clean && ts-node -T fuse verify",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "",
