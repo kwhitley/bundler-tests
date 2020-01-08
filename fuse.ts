@@ -17,9 +17,15 @@ class Context {
         httpServer: { port: 3000 },
         hmrServer: { port: 3001 },
       } : false,
-      cache : false,
+      cache: true,
     })
 }
+
+const PRODUCTION_CONFIG = {
+  uglify: true,
+  manifest: true,
+}
+
 const { task } = sparky<Context>(Context)
 
 task('default', async ctx => {
@@ -31,17 +37,11 @@ task('default', async ctx => {
 task('verify', async ctx => {
   ctx.runServer = true
   const fuse = ctx.getConfig()
-  await fuse.runProd({ 
-    uglify: true,
-    // manifest: true,
-  })
+  await fuse.runProd(PRODUCTION_CONFIG)
 })
 
 task('dist', async ctx => {
   ctx.runServer = false
   const fuse = ctx.getConfig()
-  await fuse.runProd({ 
-    uglify: true,
-    // manifest: true,
-  })
+  await fuse.runProd(PRODUCTION_CONFIG)
 })

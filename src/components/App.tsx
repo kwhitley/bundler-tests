@@ -10,8 +10,9 @@ import {
 } from 'react-router-dom'
 import './App.scss'
 import styled from 'styled-components'
+import { lazy } from '../utils/lazy'
 
-const AsyncDetails = React.lazy(() => import('./misc/AsyncDetails'))
+const AsyncDetails = lazy(() => import('./misc/AsyncDetails'))
 
 const PAGE_TRANSITIONS = 400
 const PADDING = '3em'
