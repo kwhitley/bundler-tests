@@ -36,6 +36,7 @@ task('verify', async ctx => {
     // manifest: true,
   })
 })
+
 task('dist', async ctx => {
   ctx.runServer = false
   const fuse = ctx.getConfig()

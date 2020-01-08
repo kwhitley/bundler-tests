@@ -11,9 +11,7 @@ import {
 import './App.scss'
 import styled from 'styled-components'
 
-// import { Details } from './misc/Details'
-
-const Details = React.lazy(() => import('./misc/Details'))
+const AsyncDetails = React.lazy(() => import('./misc/AsyncDetails'))
 
 const PAGE_TRANSITIONS = 400
 const PADDING = '3em'
@@ -29,28 +27,28 @@ const Loading = () => {
   )
 }
 
-export const App = () => {
-  const [counter, setCounter] = useState(0)
-  const increment = () => setCounter(counter + 1)
+// export const App = () => {
+//   const [counter, setCounter] = useState(0)
+//   const increment = () => setCounter(counter + 1)
 
-  return (
-    <div className="app">
-      <Welcome>FuseBox ❤️ JSX/TSX </Welcome>
+//   return (
+//     <div className="app">
+//       <Welcome>FuseBox ❤️ JSX/TSX </Welcome>
 
-      Counter is on { counter }
+//       Counter is on { counter }
 
-      <Button onClick={increment} disabled={counter > 5}>Tick</Button>
+//       <Button onClick={increment} disabled={counter > 5}>Tick</Button>
 
-      {
-        counter > 4
-        ? <Suspense fallback={<Loading />}>
-            <Details />
-          </Suspense>
-        : null
-      }
-    </div>
-  )
-}
+//       {
+//         counter > 4
+//         ? <Suspense fallback={<Loading />}>
+//             <AsyncDetails />
+//           </Suspense>
+//         : null
+//       }
+//     </div>
+//   )
+// }
 
 const StyledPage = styled.div`
   position: absolute;
@@ -226,6 +224,8 @@ const StyledPageItem = styled.div`
 `
 
 export const PageItem = ({ id, ...props }) => {
+  let [showDetails, setShowDetails] = useState(false)
+
   return (
     <StyledPageItem {...props}>
       <h2>item { id }</h2>
@@ -234,6 +234,15 @@ export const PageItem = ({ id, ...props }) => {
       <p>Phasellus volutpat, urna at mattis suscipit, urna mi dignissim neque, sit amet luctus lacus augue ac tortor. Donec ac nibh leo. Nunc convallis diam vulputate tincidunt finibus. Praesent pulvinar luctus nibh vel commodo. Interdum et malesuada fames ac ante ipsum primis in faucibus. Donec dolor ante, ultricies non risus dictum, pulvinar eleifend diam. Duis at sem ut tortor rhoncus egestas quis a mi. Mauris ut neque iaculis, finibus arcu id, accumsan libero. Suspendisse faucibus leo eget tellus ullamcorper auctor. In a pretium diam, gravida malesuada leo. Pellentesque eget tincidunt metus, eleifend aliquet tortor. Duis vestibulum risus ut sem porta, sit amet elementum est vehicula. Nulla urna nisi, rutrum eu dui vitae, lacinia consequat urna. Phasellus quis risus tellus. Nunc lobortis suscipit ipsum vitae viverra.</p>
       <p>Interdum et malesuada fames ac ante ipsum primis in faucibus. Morbi blandit purus mi, vel blandit metus condimentum vel. Donec a egestas dolor, ut facilisis dui. Quisque ante turpis, ullamcorper sed molestie vitae, pretium vitae metus. Interdum et malesuada fames ac ante ipsum primis in faucibus. Nulla dapibus hendrerit ex ut maximus. Morbi euismod nunc et erat faucibus, sit amet lobortis mauris consequat. Aliquam aliquet velit id orci dictum, quis varius velit tristique. Donec vitae cursus erat. Nunc ante quam, vestibulum sit amet nisi a, accumsan varius erat. Fusce faucibus dolor mi, quis semper massa facilisis a. Maecenas in aliquam quam, eget tincidunt augue. Nullam ac tellus est.</p>
       <p>Ut semper vitae augue sed euismod. Ut auctor venenatis dolor, ut efficitur tellus. Duis purus leo, accumsan a consectetur id, semper vel lorem. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Fusce quis varius lorem, eget posuere ligula. Nam ac lorem vehicula, dapibus purus et, pellentesque nibh. Nam laoreet rhoncus ante vel interdum. Mauris vitae dolor nisl. Etiam pharetra iaculis lorem non blandit. Nulla eget iaculis dolor, a blandit tellus. Vestibulum tincidunt enim quam, iaculis consectetur nisl posuere vel. Ut efficitur massa sit amet dui pharetra dapibus. Donec at velit vel risus lacinia pellentesque. Etiam vulputate placerat arcu in viverra. Phasellus pharetra justo massa, quis rhoncus enim luctus in. Nullam accumsan justo a diam consectetur faucibus.</p>
+
+      <Button secondary="true" onClick={() => setShowDetails(true)}>Show Details</Button>
+      {
+        showDetails
+        ? <Suspense fallback={<Loading />}>
+            <AsyncDetails />
+          </Suspense>
+        : null
+      }
     </StyledPageItem>
   )
 }
