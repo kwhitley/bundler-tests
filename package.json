@@ -9,7 +9,7 @@
     "setup": "yarn clean && yarn copy",
     "dev": "yarn setup && ts-node -T fuse",
     "build": "yarn setup && ts-node -T fuse dist",
-    "build:server": "ts-node -T fuse server",
+    "build:server": "ts-node -T fuse-server build",
     "verify": "yarn setup && ts-node -T fuse verify",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -18,6 +18,7 @@
   "dependencies": {
     "@supergeneric/express": "^0.5.0-next.0",
     "base64-js": "^1.3.1",
+    "compression": "^1.7.4",
     "express": "^4.17.1",
     "ieee754": "^1.1.13",
     "preact": "^10.1.1",
@@ -25,7 +26,7 @@
     "react": "^16.12.0",
     "react-dom": "^16.12.0",
     "react-router-dom": "^5.1.2",
-    "styled-components": "^4.4.1"
+    "styled-components": "^5.0.0-rc.3"
   },
   "devDependencies": {
     "@types/react": "^16.9.17",
