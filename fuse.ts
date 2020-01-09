@@ -5,10 +5,10 @@ class Context {
   getConfig = () =>
     fusebox({
       target: 'browser',
-      entry: 'src/index.tsx',
-      output: 'dist/$name',
+      entry: 'src/client/index.tsx',
+      output: 'dist/client/$name',
       webIndex: {
-        template: 'src/index.html'
+        template: 'src/client/index.html'
       },
       dependencies: {
         include: ['tslib'],
