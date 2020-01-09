@@ -1,11 +1,12 @@
 import { fusebox, sparky } from 'fuse-box'
 
-class Context {
+class ClientContext {
   runServer
   getConfig = () =>
     fusebox({
       target: 'browser',
-      entry: 'src/client/index.tsx',
+      homeDir: './src',
+      entry: 'client/index.tsx',
       output: 'dist/client/$name',
       webIndex: {
         template: 'src/client/index.html'
@@ -17,7 +18,8 @@ class Context {
         httpServer: { port: 3000 },
         hmrServer: { port: 3001 },
       } : false,
-      cache: true,
+      tsConfig: "./tsconfig.json",
+      cache: false,
     })
 }
 
@@ -26,7 +28,7 @@ const PRODUCTION_CONFIG = {
   manifest: true,
 }
 
-const { task } = sparky<Context>(Context)
+const { task } = sparky<ClientContext>(ClientContext)
 
 task('default', async ctx => {
   ctx.runServer = true
@@ -39,6 +41,8 @@ task('verify', async ctx => {
   const fuse = ctx.getConfig()
   await fuse.runProd(PRODUCTION_CONFIG)
 })
+
+// sparky()
 
 task('dist', async ctx => {
   ctx.runServer = false

@@ -15,7 +15,10 @@
     "emitDecoratorMetadata": true,
     "experimentalDecorators": true,
     "allowJs": true,
-    "esModuleInterop": true
+    "esModuleInterop": true,
+    "paths": {
+      "components/*": ["./src/client/components/*"]
+    }
   },
   "include": [
     "src/**/*.tsx"

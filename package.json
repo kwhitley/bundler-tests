@@ -9,12 +9,14 @@
     "setup": "yarn clean && yarn copy",
     "dev": "yarn setup && ts-node -T fuse",
     "build": "yarn setup && ts-node -T fuse dist",
+    "build:server": "ts-node -T fuse server",
     "verify": "yarn setup && ts-node -T fuse verify",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "@supergeneric/express": "^0.5.0-next.0",
     "base64-js": "^1.3.1",
     "express": "^4.17.1",
     "ieee754": "^1.1.13",

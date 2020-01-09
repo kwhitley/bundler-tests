@@ -1,6 +1,10 @@
 import React from 'react'
 
+console.log('async details file loaded')
+
 export const AsyncDetails = () => {
+  console.log('async details rendered')
+
   return (
     <>
       <h2>More Details</h2>
