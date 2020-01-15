@@ -292,12 +292,15 @@ export const MultiPage = () => {
   )
 }
 
+const Home = () => <p>invisible page? go to /foo</p>
+
 export const MultiPageApp = () => {
   return (
     <div>
       <Router className="main">
         <Switch>
           <Route path="/:collection/:id?" component={MultiPage} />
+          <Route path="/" component={Home} />
         </Switch>
       </Router>
     </div>

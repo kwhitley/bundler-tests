@@ -6,7 +6,7 @@ class Context {
     fusebox({
       target: 'browser',
       entry: 'src/index.tsx',
-      output: 'dist/$name',
+      output: 'public/$name',
       webIndex: {
         template: 'src/index.html'
       },
@@ -40,7 +40,7 @@ task('verify', async ctx => {
   await fuse.runProd(PRODUCTION_CONFIG)
 })
 
-task('dist', async ctx => {
+task('build', async ctx => {
   ctx.runServer = false
   const fuse = ctx.getConfig()
   await fuse.runProd(PRODUCTION_CONFIG)
