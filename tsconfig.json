@@ -2,6 +2,7 @@
   "compilerOptions": {
     "strict": true,
     "noImplicitAny": true,
+    "sourceMap": true,
     "strictNullChecks": true,
     "strictPropertyInitialization": true,
     "noImplicitThis": true,
@@ -10,6 +11,7 @@
     "module": "CommonJS",
     "target": "es5",
     "jsx": "react",
+    "jsxFactory": "h",
     "baseUrl": ".",
     "importHelpers": true,
     "emitDecoratorMetadata": true,
@@ -17,7 +19,10 @@
     "allowJs": true,
     "esModuleInterop": true,
     "paths": {
-      "components/*": ["./src/client/components/*"]
+      "components/*": ["./src/client/components/*"],
+      "react": ["preact/compat"],
+      "react-dom": ["preact/compat"],
+      "react-dom/test-utils": ["preact/test-utils"]
     }
   },
   "include": [

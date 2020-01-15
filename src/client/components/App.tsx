@@ -1,4 +1,6 @@
-import React, { useState, useEffect, useRef, Suspense } from 'react'
+import { useState, useEffect, useRef } from 'preact/hooks'
+import { Suspense } from 'preact/compat'
+import { h, Fragment } from 'preact'
 import { 
   BrowserRouter as Router, 
   Link, 
@@ -24,7 +26,7 @@ const Welcome = styled.div`
 
 const Loading = () => {
   return (
-    <>Loading...</>
+    <Fragment>Loading...</Fragment>
   )
 }
 
@@ -304,4 +306,47 @@ export const MultiPageApp = () => {
   )
 }
 
-export default MultiPageApp
+console.log({
+  h, 
+  Fragment,
+  Suspense,
+  useState,
+  useRef,
+  useEffect,
+})
+
+export const TestRoute1 = () => {
+  return (
+    <Fragment>
+      Route 1
+    </Fragment>
+  )
+}
+
+
+export const TestRoute2 = () => {
+  let { collection } = useParams()
+  return (
+    <Fragment>
+      Route 2: { collection }
+    </Fragment>
+  )
+}
+
+export const PreactTest = () => {
+  return (
+    <Fragment>
+      <h2>Preact Test</h2>
+
+      <Router className="main">
+        <Switch>
+          <Route path="/collections/:collection" component={TestRoute2} />
+          <Route path="*" component={TestRoute1} />
+        </Switch>
+      </Router>
+    </Fragment>
+  )
+}
+
+// export default MultiPageApp
+export default PreactTest
