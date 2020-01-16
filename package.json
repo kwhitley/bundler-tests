@@ -4,39 +4,35 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "clean": "rm -rf dist && mkdir dist && mkdir dist/client",
-    "copy": "cp -r src/client/public dist/client/public",
+    "clean": "rm -rf public && mkdir public",
+    "copy": "cp src/public/* public",
     "setup": "yarn clean && yarn copy",
     "dev": "yarn setup && ts-node -T fuse",
-    "build": "yarn setup && ts-node -T fuse dist",
-    "build:server": "ts-node -T fuse-server build",
+    "build": "yarn setup && ts-node -T fuse build",
     "verify": "yarn setup && ts-node -T fuse verify",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "@supergeneric/express": "^0.5.0-next.0",
     "base64-js": "^1.3.1",
     "compression": "^1.7.4",
     "express": "^4.17.1",
     "ieee754": "^1.1.13",
     "preact": "^10.2.1",
     "preact-compat": "^3.19.0",
-    "react": "^16.12.0",
-    "react-dom": "^16.12.0",
     "react-router-dom": "^5.1.2",
-    "styled-components": "^5.0.0-rc.3"
+    "styled-components": "^5.0.0"
   },
   "devDependencies": {
     "@types/react": "^16.9.17",
     "@types/react-dom": "^16.9.4",
     "fuse-box": "^4.0.0-next.164",
     "fuse-box-typechecker": "^3.0.0-next.29",
-    "node-sass": "^4.13.0",
-    "ts-node": "^8.5.4",
+    "node-sass": "^4.13.1",
+    "ts-node": "^8.6.2",
     "tslib": "^1.10.0",
     "typescript": "^3.7.4",
-    "uglify-js": "^3.7.3"
+    "uglify-js": "^3.7.5"
   }
 }

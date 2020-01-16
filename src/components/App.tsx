@@ -286,6 +286,8 @@ export const MultiPage = () => {
     }
   }, [id])
 
+  console.log('MultiPage rendered')
+
   return (
     <StyledMultiPage>
       <Index collection={collection} id={id} />
@@ -295,6 +297,7 @@ export const MultiPage = () => {
 }
 
 export const MultiPageApp = () => {
+  console.log('rendering MultiPageApp (includes router)')
   return (
     <div>
       <Router className="main">
@@ -341,12 +344,26 @@ export const PreactTest = () => {
       <Router className="main">
         <Switch>
           <Route path="/collections/:collection" component={TestRoute2} />
-          <Route path="*" component={TestRoute1} />
+          <Route path="/" component={TestRoute1} />
         </Switch>
       </Router>
+
+      <p>footer</p>
     </Fragment>
   )
 }
 
+const StyledTest = styled.div`
+  font-size: 5em;
+  color: red;
+`
+
+const StyledTestComponent = () => {
+  console.log('rendering StyledTestComponent', { StyledTest })
+  return (
+    <StyledTest>foo</StyledTest>
+  )
+}
+
 // export default MultiPageApp
-export default PreactTest
+export default MultiPageApp

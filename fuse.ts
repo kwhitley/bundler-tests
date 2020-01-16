@@ -7,10 +7,15 @@ class ClientContext {
     fusebox({
       target: 'browser',
       homeDir: './src',
-      entry: 'client/index.tsx',
-      output: 'dist/client/$name',
+      entry: 'index.tsx',
+      output: 'public/$name',
+      alias : {
+        "^react$" : "preact/compat",
+        "^react-dom/test-utils^": "preact/test-utils",
+        "^react-dom$" : "preact/compat",
+      },
       webIndex: {
-        template: 'src/client/index.html'
+        template: 'src/index.html'
       },
       webWorkers: {
         enabled: true,
@@ -56,7 +61,7 @@ task('verify', async ctx => {
 
 // sparky()
 
-task('dist', async ctx => {
+task('build', async ctx => {
   ctx.runServer = false
   const fuse = ctx.getConfig()
   await fuse.runProd(PRODUCTION_CONFIG)

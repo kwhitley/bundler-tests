@@ -19,7 +19,7 @@
     "allowJs": true,
     "esModuleInterop": true,
     "paths": {
-      "components/*": ["./src/client/components/*"],
+      "components/*": ["src/components/*"],
       "react": ["preact/compat"],
       "react-dom": ["preact/compat"],
       "react-dom/test-utils": ["preact/test-utils"]
