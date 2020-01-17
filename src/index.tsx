@@ -1,6 +1,13 @@
 import { h, render } from 'preact'
-import App from 'components/App'
+// import App from 'components/App'
+import styled from 'styled-components'
 
-console.log('loaded...')
+const StyledDiv = styled.div`
+  color: red;
+  font-size: 5em;
+`
 
-render(<App />, document.getElementById('root'))
+console.log({ StyledDiv })
+console.log(StyledDiv.toString())
+
+render(<StyledDiv>foo</StyledDiv>, document.getElementById('root'))
