@@ -1,23 +1,40 @@
 import { fusebox, sparky } from 'fuse-box'
+import compression from 'compression'
 
 class Context {
   runServer
   getConfig = () =>
     fusebox({
       target: 'browser',
-      entry: 'src/index.tsx',
+      homeDir: './src',
+      entry: 'index.tsx',
       output: 'public/$name',
       webIndex: {
         template: 'src/index.html'
       },
+      webWorkers: {
+        config: {
+          output: 'public/$name',
+        }
+      },
+      // codeSplitting: {
+      //   useHash: true,
+      // },
       dependencies: {
         include: ['tslib'],
       },
       devServer: this.runServer ? {
-        httpServer: { port: 3000 },
+        httpServer: { 
+          port: 3000,
+          express: (app, express) => {
+            app.use(compression())
+          },
+        },
         hmrServer: { port: 3001 },
       } : false,
-      cache: true,
+      tsConfig: "./tsconfig.json",
+      cache: false,
+      watch: { ignored: ['src/workers/*'] },
     })
 }
 

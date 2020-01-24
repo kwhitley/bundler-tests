@@ -12,6 +12,15 @@ import './App.scss'
 import styled from 'styled-components'
 import { lazy } from '../utils/lazy'
 
+const testWorker = new Worker('../workers/test')
+
+console.log({ testWorker })
+testWorker.onmessage = function(e) {
+  console.log('Message received from worker', e)
+}
+
+testWorker.postMessage(['hello'])
+
 const AsyncDetails = lazy(() => import('./misc/AsyncDetails'))
 
 const PAGE_TRANSITIONS = 400
@@ -27,29 +36,6 @@ const Loading = () => {
     <>Loading...</>
   )
 }
-
-// export const App = () => {
-//   const [counter, setCounter] = useState(0)
-//   const increment = () => setCounter(counter + 1)
-
-//   return (
-//     <div className="app">
-//       <Welcome>FuseBox ❤️ JSX/TSX </Welcome>
-
-//       Counter is on { counter }
-
-//       <Button onClick={increment} disabled={counter > 5}>Tick</Button>
-
-//       {
-//         counter > 4
-//         ? <Suspense fallback={<Loading />}>
-//             <AsyncDetails />
-//           </Suspense>
-//         : null
-//       }
-//     </div>
-//   )
-// }
 
 const StyledPage = styled.div`
   position: absolute;
@@ -94,11 +80,6 @@ const StyledGridItem = styled.div`
   }
 `
 
-const BigNumber = styled.span`
-  font-size: 2em;
-  margin-left: 0.2em;
-`
-
 export const GridItem = ({ collection, id }) => {
   return (
     <StyledGridItem as={Link} to={`/${collection}/${id}`}>
@@ -127,7 +108,7 @@ const StyledDetails = styled(StyledPage)`
   transform: translate3D(${props => props.visible ? 0 : '100%'},0,0);
 `
 
-const Button = styled.div`
+export const Button = styled.div`
   flex: 1;
   display: block;
   border: 0;
@@ -292,7 +273,7 @@ export const MultiPage = () => {
   )
 }
 
-const Home = () => <p>invisible page? go to /foo</p>
+const Home = () => <p>invisible page? go to <Link to="/foo">/foo</Link></p>
 
 export const MultiPageApp = () => {
   return (
