@@ -240,7 +240,7 @@ export const PageItem = ({ id, ...props }) => {
       {
         showDetails
         ? <Suspense fallback={<Loading />}>
-            <AsyncDetails />
+            <AsyncDetails item={id} />
           </Suspense>
         : null
       }

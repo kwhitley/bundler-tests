@@ -1,4 +1,5 @@
 import { fusebox, sparky } from 'fuse-box'
+import compression from 'compression'
 
 class Context {
   runServer
@@ -14,10 +15,15 @@ class Context {
         include: ['tslib'],
       },
       devServer: this.runServer ? {
-        httpServer: { port: 3000 },
+        httpServer: { 
+          port: 3000,
+          express: (app, express) => {
+            app.use(compression())
+          },
+        },
         hmrServer: { port: 3001 },
       } : false,
-      cache: true,
+      cache: false,
     })
 }
 
