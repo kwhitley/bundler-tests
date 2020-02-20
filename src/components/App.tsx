@@ -22,34 +22,7 @@ const Welcome = styled.div`
   font-weight: lighter;
 `
 
-const Loading = () => {
-  return (
-    <>Loading...</>
-  )
-}
-
-// export const App = () => {
-//   const [counter, setCounter] = useState(0)
-//   const increment = () => setCounter(counter + 1)
-
-//   return (
-//     <div className="app">
-//       <Welcome>FuseBox ❤️ JSX/TSX </Welcome>
-
-//       Counter is on { counter }
-
-//       <Button onClick={increment} disabled={counter > 5}>Tick</Button>
-
-//       {
-//         counter > 4
-//         ? <Suspense fallback={<Loading />}>
-//             <AsyncDetails />
-//           </Suspense>
-//         : null
-//       }
-//     </div>
-//   )
-// }
+const Loading = () => <>Loading...</>
 
 const StyledPage = styled.div`
   position: absolute;
